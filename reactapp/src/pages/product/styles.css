@@ -1,0 +1,14 @@
+.container{
+    border: 1px solid  	#87CEEB;
+    border-radius: 5px;
+    margin:10px;
+}
+.container h1{
+    font-size: 32px;
+    font-family: 'Lobster', cursive;
+}
+.container p{
+    
+    font-family: 'Comfortaa', cursive;
+
+}
