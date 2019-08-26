@@ -1,0 +1,16 @@
+
+.produtos-header{
+
+    font-family: 'Lobster', cursive;
+    color:#fff
+}
+.navbar-light .navbar-brand{
+    max-width: 1000px;
+    margin: 10px auto 0;
+}
+.bg-light{
+    background-color: #2576f7 !important
+}
+.navbar{
+    padding: .0rem 1rem;
+}

@@ -1,0 +1,20 @@
+.formulario{
+    border: 1px solid  	#87CEEB;
+    background-color: #FFF;
+    border-radius: 5px;
+    margin:10px;
+    align-items: center;
+}
+.container h1{
+    font-size: 32px;
+    font-family: 'Lobster', cursive;
+}
+.container p{
+    
+    font-family: 'Comfortaa', cursive;
+
+}
+.btn{
+    width: 100%;
+    margin-top: 10px;
+}

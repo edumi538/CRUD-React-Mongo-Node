@@ -1,14 +1,10 @@
-.container{
-    border: 1px solid  	#87CEEB;
-    border-radius: 5px;
-    margin:10px;
+.btn-danger{
+    margin-bottom: 10px;
 }
-.container h1{
-    font-size: 32px;
-    font-family: 'Lobster', cursive;
+.listcard{
+    margin-left: 25px;
+    margin-top: 25px;
 }
-.container p{
-    
-    font-family: 'Comfortaa', cursive;
-
+.btn-danger{
+    width: 100%;
 }

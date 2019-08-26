@@ -1,50 +1,51 @@
-import React, { Component } from 'react';
-import api from '../../services/api'
+import React, {Component} from 'react'
 import './styles.css'
-import { Link } from 'react-router-dom';
+import { MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBView, MDBContainer } from "mdbreact";
+export default class Main extends Component{
 
-export default class Main extends Component {
-
-    state = {
-        products: [],
-    }
-
-    componentDidMount() {
-        this.loadProducts();
-    }
-
-    loadProducts = async () => {
-        const response = await api.get('http://localhost:8081/api/product')
-
-        this.setState({ products: response.data.docs })
-    }
-    deleteProducts = async () => {
-
-        const { id } = this.props.match.params;
-
-        const response = await api.delete(`http://localhost:8081/api/deletebyid/${id}`)
-
-        this.setState({product: response.data})
-    }
-
-    render() {
-
-        const { products } = this.state;
-
-        return (
-      
-                    <ul className="list-group">{products.map(product => (
-                        <li className="list-group-item">
-                            <span className="nes-text" key={product._id}>
-                            {product.title}
-                            </span>
-                            <h6>
-                            {product.description}
-                            </h6>
-                            <Link className="btn btn-primary" to={`/product/${product._id}`}>Acessar</Link>
-                        </li>
-                    ))}</ul>
-        )
-    }
+render(){
+  return(
+<MDBContainer>
+      <MDBCarousel
+        activeItem={1}
+        length={3}
+        showControls={true}
+        showIndicators={false}
+        className="z-depth-1"
+        slide
+      >
+        <MDBCarouselInner>
+          <MDBCarouselItem itemId="1">
+            <MDBView>
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+                alt="First slide"
+              />
+            </MDBView>
+          </MDBCarouselItem>
+          <MDBCarouselItem itemId="2">
+            <MDBView>
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
+                alt="Second slide"
+              />
+            </MDBView>
+          </MDBCarouselItem>
+          <MDBCarouselItem itemId="3">
+            <MDBView>
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
+                alt="Third slide"
+              />
+            </MDBView>
+          </MDBCarouselItem>
+        </MDBCarouselInner>
+      </MDBCarousel>
+    </MDBContainer>
+  )
 }
 
+}
