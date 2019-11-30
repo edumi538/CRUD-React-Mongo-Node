@@ -1,16 +1,38 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const requireDir = require('require-dir');
-const cors = require('cors');
+const   myConnection  = require( 'express-myconnection' ),
+        bodyParser    = require( 'body-parser' ),
+        request       = require( 'request' ),
+        express       = require( 'express' ),
+        morgan        = require( 'morgan' ),
+        mysql         = require( 'mysql' );
+        path          = require( 'path' ),
+        cors          = require( 'cors' );
 
-// Iniciando o app
-const app = express();
-app.use(express.json());
-app.use(cors());
-// Iniciando DB
-mongoose.connect('mongodb://localhost:27017/nodeapi',{useNewUrlParser: true});
-requireDir('./src/models');
+const app = express( );
 
-app.use('/api', require("./src/routes"));
+// Importando Rotas.
+const customerRoutes = require( "./src/routes" );
 
-app.listen(8081);
+// Middlewares.
+app.use( express.json( ) );
+app.use( cors( ) );
+
+app.use( morgan( 'dev' ) );
+app.use( myConnection( mysql,
+{
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    port: 3306,
+    database: 'locaveiculos'
+}, 'single' ) );
+
+app.use( bodyParser.json( ) )
+app.use( bodyParser.urlencoded( { extended: true } ))
+
+// Rotas.
+app.use( '/', customerRoutes );
+
+// Iniciando Servidor.
+app.listen( 3000, ( ) => {
+  console.log( `Servidor iniciado na porta: 3000` );
+});
